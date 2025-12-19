@@ -1,46 +1,32 @@
 // Copyright 2025 <Sparta>
 #include <iostream>
-#include "Vector.h"
+#include "Inventory.h"
+#include "Weapon.h"
 
 int main() {
-    try {
-        Vector<int> vec;
-        vec.push_back(10);
-        std::cout << "vec capacity : " << vec.getCapcity()
-            << " size : " << vec.getSize() << "\n";
-        vec.push_back(20);
-        std::cout << "vec capacity : " << vec.getCapcity()
-            << " size : " << vec.getSize() << "\n";
-        vec.push_back(30);
-        std::cout << "vec capacity : " << vec.getCapcity()
-            << " size : " << vec.getSize() << "\n";
+    Inventory<Weapon> weaponInventory;
 
-        for (const int& num : vec) {
-            std::cout << "Num: " << num << "\n";
-        }
+    // 처음 생성되었으 때의 상태
+    std::cout << "WeaonInventory | capcity : " << weaponInventory.GetCapcity()
+        << ", size : " << weaponInventory.GetSize() << "\n";
 
-        vec.pop_back();
+    weaponInventory.AddItem(Weapon("Sword", 10));
+    weaponInventory.AddItem(Weapon("Shield", 15));
+    weaponInventory.AddItem(Weapon("Spear", 8));
 
-        for (const int& num : vec) {
-            std::cout << "Num: " << num << "\n";
-        }
+    weaponInventory.PrintAllItems();
 
-        vec.pop_back();
-        vec.pop_back();
-        vec.pop_back();
-    } catch (const std::exception& e) {
-        std::cout << "error : " << e.what() << "\n";
+    for (int i = 0; i <= 7; i++) {
+        weaponInventory.AddItem(Weapon("Sword", 10));
     }
 
-    try {
-        Vector<int> vec2(10, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
-
-        for (const int& num : vec2) {
-            std::cout << "Num: " << num << "\n";
-        }
-    } catch (const std::exception& e) {
-        std::cout << "error : " << e.what() << "\n";
+    for (int i = 0; i < 5; i++) {
+        weaponInventory.RemoveLastItem();
     }
+    weaponInventory.PrintAllItems();
 
+    for (int i = 0; i < 5; i++) {
+        weaponInventory.RemoveLastItem();
+    }
     return 0;
 }
