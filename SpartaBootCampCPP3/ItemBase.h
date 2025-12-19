@@ -11,11 +11,11 @@ class ItemBase {
 
      virtual void PrintInfo() const;
 
-     void setName(std::string newName);
-     std::string getName();
+     void SetName(std::string newName);
+     std::string GetName() const;
 
-     void setPrice(int newPrice);
-     int getPrice();
+     void SetPrice(int newPrice);
+     int GetPrice() const;
 
 
  private:

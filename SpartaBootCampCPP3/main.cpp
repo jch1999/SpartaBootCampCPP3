@@ -4,29 +4,48 @@
 #include "Weapon.h"
 
 int main() {
-    Inventory<Weapon> weaponInventory;
-
-    // 처음 생성되었으 때의 상태
-    std::cout << "WeaonInventory | capcity : " << weaponInventory.GetCapcity()
-        << ", size : " << weaponInventory.GetSize() << "\n";
-
-    weaponInventory.AddItem(Weapon("Sword", 10));
-    weaponInventory.AddItem(Weapon("Shield", 15));
-    weaponInventory.AddItem(Weapon("Spear", 8));
-
+    // 생성
+    Inventory<Weapon> weaponInventory(3);
+    weaponInventory.AddItem(Weapon("StoneSpear", 3));
+    weaponInventory.AddItem(Weapon("IronSpear", 5));
+    weaponInventory.AddItem(Weapon("WoodenSpear", 1));
+    // 출력
     weaponInventory.PrintAllItems();
+    std::cout << "WeaponInventory capcity: " << weaponInventory.GetCapcity()
+        << ", size: " << weaponInventory.GetSize() << "\n\n";
 
-    for (int i = 0; i <= 7; i++) {
-        weaponInventory.AddItem(Weapon("Sword", 10));
-    }
-
-    for (int i = 0; i < 5; i++) {
-        weaponInventory.RemoveLastItem();
-    }
+    // capacity up!
+    weaponInventory.AddItem(Weapon("StoneHamer", 4));
+    weaponInventory.AddItem(Weapon("IronHamer", 6));
+    weaponInventory.AddItem(Weapon("woodenHamer", 2));
+    // 출력
     weaponInventory.PrintAllItems();
+    std::cout << "WeaponInventory capcity: " << weaponInventory.GetCapcity()
+        << ", size: " << weaponInventory.GetSize() << "\n\n";
 
-    for (int i = 0; i < 5; i++) {
-        weaponInventory.RemoveLastItem();
+    // 정렬
+    weaponInventory.SortItems();
+    weaponInventory.PrintAllItems();
+    std::cout << "WeaponInventory capcity: " << weaponInventory.GetCapcity()
+        << ", size: " << weaponInventory.GetSize() << "\n\n";
+
+    // 복사
+    Inventory<Weapon> newWeaponInventory(weaponInventory);
+    // 출력
+    newWeaponInventory.PrintAllItems();
+    std::cout << "WeaponInventory capcity: " << newWeaponInventory.GetCapcity()
+        << ", size: " << newWeaponInventory.GetSize() << "\n\n";
+
+    for (int i = 0; i < 7; i++) {
+        newWeaponInventory.RemoveLastItem();
     }
+
+    // 대입
+    weaponInventory.Assign(newWeaponInventory);
+    // 출력
+    weaponInventory.PrintAllItems();
+    std::cout << "WeaponInventory capcity: " << weaponInventory.GetCapcity()
+        << ", size: " << weaponInventory.GetSize() << "\n\n";
+
     return 0;
 }

@@ -4,7 +4,7 @@
 #include "Weapon.h"
 
 Weapon::Weapon() : ItemBase() {
-    setName("Weapon");
+    SetName("Weapon");
 }
 
 Weapon::Weapon(std::string name_, int price_) : ItemBase(name_, price_) {

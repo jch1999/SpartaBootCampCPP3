@@ -19,18 +19,18 @@ void ItemBase::PrintInfo() const {
         << ", 가격: " << price_ << "G]" << std::endl;
 }
 
-void ItemBase::setName(std::string newName) {
+void ItemBase::SetName(std::string newName) {
     this->name_ = newName;
 }
 
-std::string ItemBase::getName() {
+std::string ItemBase::GetName() const {
     return name_;
 }
 
-void ItemBase::setPrice(int newPrice) {
+void ItemBase::SetPrice(int newPrice) {
     this->price_ = newPrice;
 }
 
-int ItemBase::getPrice() {
+int ItemBase::GetPrice() const {
     return price_;
 }
